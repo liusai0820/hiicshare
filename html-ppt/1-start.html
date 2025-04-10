@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI赋能工作效率提升实践分享</title>
+<link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #a8c7fa;
+  --primary-dark: #2f3699;
+  --secondary-color: #48cae4;
+  --accent-color: #ff6b6b;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --mid-gray: #888888;
+  --text-color: #333333;
+  --light-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
+  color: var(--text-color);
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.5em;
+}
+
+.slide-container {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  overflow: hidden;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.content-area {
+  grid-area: content;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--mid-gray);
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+
+.page-number {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* 封面页特定样式 */
+.cover-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(72, 202, 228, 0.1) 100%);
+  z-index: -1;
+}
+
+.cover-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(67, 97, 238, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 100px;
+}
+
+.cover-title {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.cover-subtitle {
+  font-size: 1.8em;
+  color: var(--primary-dark);
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+.cover-author {
+  font-size: 0.9em;
+  margin-top: 40px;
+  color: var(--mid-gray);
+  line-height: 1.4;
+}
+
+.cover-author p {
+  margin: 2px 0;
+}
+
+.cover-decoration {
+  position: absolute;
+  z-index: -1;
+}
+
+.cover-decoration.top-left {
+  top: 50px;
+  left: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.cover-decoration.bottom-right {
+  bottom: 50px;
+  right: 50px;
+  width: 180px;
+  height: 180px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background-color: rgba(72, 202, 228, 0.1);
+}
+
+.cover-icon {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.cover-apps {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.app-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+.app-icon:hover {
+  transform: translateY(-5px);
+}
+
+.app-icon i {
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.app-icon span {
+  font-size: 0.7em;
+  color: var(--mid-gray);
+}
+
+/* 结束页特定样式 */
+.closing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 100px;
+}
+
+.closing-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.closing-quote {
+  font-size: 1.4em;
+  color: var(--dark-gray);
+  font-style: italic;
+  margin-bottom: 40px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.closing-quote::before {
+  content: """;
+  font-size: 3em;
+  color: rgba(67, 97, 238, 0.2);
+  position: absolute;
+  top: -30px;
+  left: -20px;
+}
+
+.closing-quote::after {
+  content: """;
+  font-size: 3em;
+  color: rgba(67, 97, 238, 0.2);
+  position: absolute;
+  bottom: -50px;
+  right: -20px;
+}
+
+.vision-points {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 30px;
+}
+
+.vision-point {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.vision-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.vision-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.vision-desc {
+  color: var(--mid-gray);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.thank-you {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 50px;
+}
+
+.contact-info {
+  margin-top: 20px;
+  color: var(--mid-gray);
+  font-size: 0.9em;
+}
+
+@media print {
+  .slide-container {
+    width: 1280px !important;
+    height: 720px !important;
+    page-break-after: always;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .slide-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+</style>
+</head>
+<body>
+<!-- 封面页 -->
+<div class="slide-container">
+<div class="cover-gradient"></div>
+<div class="cover-pattern"></div>
+<div class="cover-decoration top-left"></div>
+<div class="cover-decoration bottom-right"></div>
+<div class="content-area">
+<div class="cover-content">
+<div class="cover-icon">
+<i class="fas fa-robot"></i>
+</div>
+<h1 class="cover-title">AI赋能工作效率</h1>
+<h2 class="cover-subtitle">从工具到生产力的蜕变</h2>
+<div class="cover-apps">
+<div class="app-icon">
+<i class="fas fa-comments"></i>
+<span>Lobe Chat</span>
+</div>
+<div class="app-icon">
+<i class="fas fa-project-diagram"></i>
+<span>产业链图谱</span>
+</div>
+<div class="app-icon">
+<i class="fas fa-desktop"></i>
+<span>AI-PPT</span>
+</div>
+<div class="app-icon">
+<i class="fas fa-file-alt"></i>
+<span>公文助手</span>
+</div>
+</div>
+<div class="cover-author">
+<p>刘赛 | 科技转化部</p>
+<p>2025年4月</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<div>AI赋能工作效率提升实践分享</div>
+</div>
+</div>
+</body>
+</html>

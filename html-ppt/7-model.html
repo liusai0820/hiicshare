@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>模型即产品</title>
+<link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #a8c7fa;
+  --primary-dark: #2f3699;
+  --secondary-color: #48cae4;
+  --accent-color: #ff6b6b;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --mid-gray: #888888;
+  --text-color: #333333;
+  --light-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
+  color: var(--text-color);
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.5em;
+}
+
+.slide-container {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  overflow: hidden;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.content-area {
+  grid-area: content;
+  padding: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--mid-gray);
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+
+.page-number {
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: calc(100% - 80px);
+}
+
+.model-highlight {
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+}
+
+.model-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--primary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 1.5em;
+  color: var(--primary-dark);
+  flex-shrink: 0;
+}
+
+.model-content {
+  flex: 1;
+}
+
+.model-content h3 {
+  margin-bottom: 5px;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.model-tag {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.7em;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: normal;
+}
+
+.model-content p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 0.85em;
+}
+
+.iterate-process {
+  background-color: #f8f9ff;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  height: 100%;
+}
+
+.iterate-step {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.iterate-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-dark);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.iterate-content {
+  flex: 1;
+  background-color: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.iterate-content h4 {
+  margin: 0 0 5px 0;
+  color: var(--primary-dark);
+}
+
+.iterate-content p {
+  margin: 0;
+  font-size: 0.85em;
+  color: var(--mid-gray);
+}
+
+.iterate-connector {
+  position: absolute;
+  width: 2px;
+  background-color: var(--primary-light);
+  left: 39px;
+  top: 60px;
+  bottom: 60px;
+  z-index: 0;
+}
+
+.quote-box {
+  background-color: #f0f4ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.quote-box p {
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-box::before {
+  content: "\201C";
+  font-size: 5em;
+  color: rgba(67, 97, 238, 0.1);
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  z-index: 0;
+}
+
+.mini-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-bottom: 10px;
+}
+
+.mini-card-title {
+  font-weight: 500;
+  color: var(--primary-dark);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.mini-card-title i {
+  margin-right: 8px;
+  color: var(--primary-dark);
+}
+
+.mini-card-content {
+  font-size: 0.85em;
+  color: var(--mid-gray);
+}
+
+@media print {
+  .slide-container {
+    width: 1280px !important;
+    height: 720px !important;
+    page-break-after: always;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .slide-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+
+/* 添加厂商特定图标样式 */
+.brand-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-icon img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+}
+
+/* 新增2x2流程布局样式 */
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.process-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.process-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-dark);
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 0.85em;
+}
+
+.process-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.process-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.process-content {
+  font-size: 0.85em;
+  color: var(--mid-gray);
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<!-- 模型即产品页 -->
+<div class="slide-container">
+<div class="header">
+<div class="logo"><i class="fas fa-brain"></i> 模型即产品</div>
+<div class="subtitle">强大模型的直接价值</div>
+</div>
+<div class="content-area">
+<h2 style="margin-bottom: 20px;">超越工具：模型本身即最强大的产品</h2>
+<div class="two-column">
+<div>
+<div class="model-highlight">
+<div class="model-logo" style="background-color: white; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<div class="brand-icon">
+<img alt="Google Gemini" src="../image/gemini-color.png" style="max-width: 80%; max-height: 80%; object-fit: contain;"/>
+</div>
+</div>
+<div class="model-content">
+<h3>Gemini 2.5 Pro <span class="model-tag">研究分析</span></h3>
+<p>深度研究能力出色，能直接生成高质量的分析报告和研究方案</p>
+</div>
+</div>
+<div class="model-highlight">
+<div class="model-logo" style="background-color: white; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<div class="brand-icon">
+<img alt="OpenAI GPT" src="../image/openai.svg" style="width: 45px; height: 45px; color: #10a37f;"/>
+</div>
+</div>
+<div class="model-content">
+<h3>GPT-4o <span class="model-tag">文生图</span></h3>
+<p>图像生成能力强大，直接在对话中创建高质量视觉内容</p>
+</div>
+</div>
+<div class="model-highlight">
+<div class="model-logo" style="background-color: white; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<div class="brand-icon">
+<img alt="Anthropic Claude" src="../image/claude-color.png" style="max-width: 80%; max-height: 80%; object-fit: contain;"/>
+</div>
+</div>
+<div class="model-content">
+<h3>Claude 3.7 <span class="model-tag">代码开发</span></h3>
+<p>卓越的代码能力，可直接生成完整功能模块和技术方案</p>
+</div>
+</div>
+<div class="model-highlight">
+<div class="model-logo" style="background-color: white; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<div class="brand-icon">
+<img alt="DeepSeek" src="../image/deepseek-color.png" style="max-width: 80%; max-height: 80%; object-fit: contain;"/>
+</div>
+</div>
+<div class="model-content">
+<h3>DeepSeek V3<span class="model-tag">开源模型</span></h3>
+<p>支持本地部署，高效推理能力，资源占用低，性能表现优异</p>
+</div>
+</div>
+</div>
+<div>
+<div style="background-color: #f8f9ff; border-radius: 12px; padding: 12px; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+<h3 style="margin-bottom: 10px; color: var(--primary-dark); font-size: 1.1em;">
+<i class="fas fa-lightbulb" style="margin-right: 8px;"></i>
+            每个人都可以做出应用
+          </h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex-grow: 1;">
+<div class="mini-card" style="padding: 10px; display: flex; flex-direction: column; background-color: rgba(243, 245, 255, 0.8); border-left: 3px solid var(--primary-dark);">
+<div class="mini-card-title" style="margin-bottom: 4px; font-size: 0.85em; font-weight: 600;">
+<i class="fas fa-tasks" style="color: var(--primary-dark);"></i> 单点需求解决
+              </div>
+<div class="mini-card-content" style="font-size: 0.75em; line-height: 1.4; color: #555;">
+                直接满足特定场景需求，无需复杂系统<br/>
+                • 快速解决业务痛点<br/>
+                • 无需大规模开发团队<br/>
+                • 降低技术实现门槛
+              </div>
+</div>
+<div class="mini-card" style="padding: 10px; display: flex; flex-direction: column; background-color: rgba(243, 245, 255, 0.8); border-left: 3px solid var(--primary-dark);">
+<div class="mini-card-title" style="margin-bottom: 4px; font-size: 0.85em; font-weight: 600;">
+<i class="fas fa-rocket" style="color: var(--primary-dark);"></i> 快速原型验证
+              </div>
+<div class="mini-card-content" style="font-size: 0.75em; line-height: 1.4; color: #555;">
+                低成本验证创意，快速迭代优化<br/>
+                • 从想法到原型仅需数小时<br/>
+                • 持续收集用户反馈<br/>
+                • 敏捷调整功能和体验
+              </div>
+</div>
+<div class="mini-card" style="padding: 10px; display: flex; flex-direction: column; background-color: rgba(243, 245, 255, 0.8); border-left: 3px solid var(--primary-dark);">
+<div class="mini-card-title" style="margin-bottom: 4px; font-size: 0.85em; font-weight: 600;">
+<i class="fas fa-user-cog" style="color: var(--primary-dark);"></i> 个性化定制
+              </div>
+<div class="mini-card-content" style="font-size: 0.75em; line-height: 1.4; color: #555;">
+                满足小众需求，大厂不会开发的应用<br/>
+                • 专注解决垂直领域问题<br/>
+                • 为特定群体量身定制<br/>
+                • 灵活适应不同场景需求
+              </div>
+</div>
+<div class="mini-card" style="padding: 10px; display: flex; flex-direction: column; background-color: rgba(243, 245, 255, 0.8); border-left: 3px solid var(--primary-dark);">
+<div class="mini-card-title" style="margin-bottom: 4px; font-size: 0.85em; font-weight: 600;">
+<i class="fas fa-lightbulb" style="color: var(--primary-dark);"></i> 创新探索
+              </div>
+<div class="mini-card-content" style="font-size: 0.75em; line-height: 1.4; color: #555;">
+                尝试全新思路，突破传统应用边界<br/>
+                • 融合多模态交互方式<br/>
+                • 探索前沿技术可能性<br/>
+                • 打破行业固有思维模式
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="background-color: #f0f4ff; border-radius: 12px; padding: 15px; margin-top: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<div style="flex: 1; padding-right: 20px; border-right: 1px dashed rgba(67, 97, 238, 0.2);">
+<p style="font-weight: 500; color: var(--primary-dark); font-style: italic; line-height: 1.5; font-size: 0.9em; margin: 0; display: flex; align-items: center;">
+<i class="fas fa-quote-left" style="color: var(--primary-light); margin-right: 10px; font-size: 1.2em;"></i>
+            复杂的工作流、工程化设计，眼睁睁被强大的模型基座能力碾碎。类比自动驾驶的端到端路线，模型能力的提升正在开创全新可能。
+          </p>
+</div>
+<div style="flex: 1; padding-left: 20px;">
+<p style="font-weight: 500; color: var(--primary-dark); font-style: italic; line-height: 1.5; font-size: 0.9em; margin: 0; display: flex; align-items: center;">
+<i class="fas fa-quote-left" style="color: var(--primary-light); margin-right: 10px; font-size: 1.2em;"></i>
+            用最好的模型能力，每个人、每个组织都可以快速搭建内部应用，满足个性化场景需求。直接解决单点需求，日抛月抛也没关系。
+          </p>
+</div>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-top: 20px; gap: 12px;">
+<div style="background-color: white; border-radius: 8px; padding: 12px; flex-grow: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+<div style="display: flex; align-items: center; margin-bottom: 6px;">
+<i class="fas fa-check-circle" style="color: var(--primary-dark); margin-right: 5px;"></i>
+<h4 style="font-size: 0.85em; margin: 0; color: var(--primary-dark);">模型即服务</h4>
+</div>
+<p style="font-size: 0.75em; color: var(--mid-gray); margin: 0;">直接调用API，零门槛接入算力与能力，无需管理硬件和运维</p>
+</div>
+<div style="background-color: white; border-radius: 8px; padding: 12px; flex-grow: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+<div style="display: flex; align-items: center; margin-bottom: 6px;">
+<i class="fas fa-brain" style="color: var(--primary-dark); margin-right: 5px;"></i>
+<h4 style="font-size: 0.85em; margin: 0; color: var(--primary-dark);">统一接口范式</h4>
+</div>
+<p style="font-size: 0.75em; color: var(--mid-gray); margin: 0;">告别复杂API与SDK，基于自然语言的通用交互方式</p>
+</div>
+<div style="background-color: white; border-radius: 8px; padding: 12px; flex-grow: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+<div style="display: flex; align-items: center; margin-bottom: 6px;">
+<i class="fas fa-magic" style="color: var(--primary-dark); margin-right: 5px;"></i>
+<h4 style="font-size: 0.85em; margin: 0; color: var(--primary-dark);">持续高速进化</h4>
+</div>
+<p style="font-size: 0.75em; color: var(--mid-gray); margin: 0;">模型不断迭代升级，应用无需重构即可享受新能力</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<div>AI赋能工作效率提升实践分享</div>
+</div>
+</div>
+</body>
+</html>

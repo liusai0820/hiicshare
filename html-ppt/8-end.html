@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI赋能工作效率提升实践分享</title>
+<link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #a8c7fa;
+  --primary-dark: #2f3699;
+  --secondary-color: #48cae4;
+  --accent-color: #ff6b6b;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --mid-gray: #888888;
+  --text-color: #333333;
+  --light-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
+  color: var(--text-color);
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.5em;
+}
+
+.slide-container {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  overflow: hidden;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.content-area {
+  grid-area: content;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--mid-gray);
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+
+.page-number {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* 封面页特定样式 */
+.cover-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(72, 202, 228, 0.1) 100%);
+  z-index: -1;
+}
+
+.cover-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(67, 97, 238, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 100px;
+}
+
+.cover-title {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.cover-subtitle {
+  font-size: 1.8em;
+  color: var(--primary-dark);
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+.cover-author {
+  font-size: 1.2em;
+  margin-top: 50px;
+  color: var(--mid-gray);
+}
+
+.cover-decoration {
+  position: absolute;
+  z-index: -1;
+}
+
+.cover-decoration.top-left {
+  top: 50px;
+  left: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.cover-decoration.bottom-right {
+  bottom: 50px;
+  right: 50px;
+  width: 180px;
+  height: 180px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background-color: rgba(72, 202, 228, 0.1);
+}
+
+.cover-icon {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.cover-apps {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.app-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+.app-icon:hover {
+  transform: translateY(-5px);
+}
+
+.app-icon i {
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.app-icon span {
+  font-size: 0.7em;
+  color: var(--mid-gray);
+}
+
+/* 结束页特定样式 */
+.closing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 100px;
+}
+
+.closing-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.closing-quote {
+  font-size: 1.2em;
+  color: var(--dark-gray);
+  font-style: italic;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  position: relative;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.quote-left, .quote-right {
+  font-size: 3.5em;
+  color: rgba(67, 97, 238, 0.4);
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.quote-left {
+  margin-right: 6px;
+  align-self: flex-start;
+  margin-top: 0.2em;
+}
+
+.quote-right {
+  margin-left: 6px;
+  align-self: flex-end;
+  margin-bottom: 0.2em;
+}
+
+.quote-text {
+  flex: 1;
+  text-align: left;
+}
+
+.vision-points {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.vision-point {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  width: 230px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.vision-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.vision-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+  font-size: 1em;
+}
+
+.vision-desc {
+  color: var(--mid-gray);
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+.thank-you {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 30px;
+}
+
+.contact-info {
+  margin-top: 10px;
+  color: var(--mid-gray);
+  font-size: 0.8em;
+}
+
+@media print {
+  .slide-container {
+    width: 1280px !important;
+    height: 720px !important;
+    page-break-after: always;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .slide-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+</style>
+</head>
+<body>
+<!-- 结束页 -->
+<div class="slide-container">
+<div class="cover-gradient"></div>
+<div class="cover-pattern"></div>
+<div class="content-area">
+<div class="closing-content">
+<h1 class="closing-title">AI：从工具到思维方式的转变</h1>
+<div class="closing-quote">
+<span class="quote-left">"</span>
+<span class="quote-text">技术终极目标是让人类工作生活更好，AI价值在于解决实际问题，让我们专注创造性工作。</span>
+<span class="quote-right">"</span>
+</div>
+<div class="vision-points">
+<div class="vision-point">
+<div class="vision-icon">
+<i class="fas fa-lightbulb"></i>
+</div>
+<div class="vision-title">重新定义工作</div>
+<div class="vision-desc">
+            AI重新定义工作方式，让我们从重复性任务中解放，专注于创造性思考和战略决策。
+          </div>
+</div>
+<div class="vision-point">
+<div class="vision-icon">
+<i class="fas fa-users"></i>
+</div>
+<div class="vision-title">人机协作新模式</div>
+<div class="vision-desc">
+            人类创意决策，AI执行分析，形成互补共赢关系，创造更高效的工作场景。
+          </div>
+</div>
+<div class="vision-point">
+<div class="vision-icon">
+<i class="fas fa-rocket"></i>
+</div>
+<div class="vision-title">持续创新迭代</div>
+<div class="vision-desc">
+            保持开放心态，将AI融入工作流程，持续学习适应新技术，实现个人与组织进化。
+          </div>
+</div>
+</div>
+<div class="thank-you">谢谢聆听！</div>
+<div class="contact-info">
+<p>欢迎交流讨论</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<div>AI赋能工作效率提升实践分享</div>
+</div>
+</div>
+</body>
+</html>

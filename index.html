@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML PPT 演示</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 确保控制条在全屏时仍然可见 */
+        .controls {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000; /* 确保在任何全屏元素之上 */
+        }
+    </style>
+</head>
+<body>
+    <div class="ppt-container">
+        <iframe id="ppt-frame" src="" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+    <div class="controls">
+        <button id="prev-btn">&lt; 上一页</button>
+        <span id="page-info"></span>
+        <button id="next-btn">下一页 &gt;</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

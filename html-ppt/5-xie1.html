@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>智能公文助手介绍</title>
+<link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --primary-color: #4361ee;
+  --primary-light: #a8c7fa;
+  --primary-dark: #2f3699;
+  --secondary-color: #48cae4;
+  --accent-color: #ff6b6b;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --mid-gray: #888888;
+  --text-color: #333333;
+  --light-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
+  color: var(--text-color);
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.5em;
+}
+
+.slide-container {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.content-area {
+  grid-area: content;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--mid-gray);
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+
+.page-number {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* 特定页面样式 */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  height: 100%;
+}
+
+.value-prop {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(67, 97, 238, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.value-prop h3 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.value-prop h3 i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.value-prop p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 1.5em;
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature-text h3 {
+  margin-bottom: 5px;
+  color: var(--primary-dark);
+}
+
+.feature-text p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.use-case {
+  background-color: #f8f9ff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--secondary-color);
+  position: relative;
+}
+
+.use-case h3 {
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.use-case h3 i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.use-case p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.use-case-tag {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 0.7em;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.document-preview {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.document-header {
+  background-color: #f5f5f5;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.document-content {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1.8;
+}
+
+.document-red-header {
+  color: #b91c1c;
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.document-title {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.document-body {
+  text-indent: 2em;
+  font-size: 0.9em;
+}
+
+.document-footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.9em;
+}
+
+.stats-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.stats-number {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.stats-number span {
+  font-size: 0.5em;
+  color: var(--mid-gray);
+  margin-left: 5px;
+}
+
+.stats-label {
+  color: var(--mid-gray);
+  font-size: 0.9em;
+}
+
+.mini-feature {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mini-feature i {
+  color: var(--primary-color);
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+/* 添加雷达图样式 */
+.radar-chart-container {
+  width: 100%;
+  height: 150px;
+  margin: 10px 0;
+  position: relative;
+}
+
+/* 头像样式 */
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* 技能标签样式 */
+.skill-tag {
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--primary-color);
+  border-radius: 15px;
+  padding: 4px 10px;
+  font-size: 12px;
+  display: inline-block;
+  margin: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.skill-tag i {
+  margin-right: 4px;
+  font-size: 10px;
+}
+
+/* 导航控件样式 */
+.slide-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100;
+}
+
+.nav-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-button:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* 页码控制样式 */
+.page-controls {
+  display: inline-flex;
+  margin-left: 10px;
+  gap: 5px;
+}
+
+.page-control {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+  padding: 0;
+}
+
+.page-control:hover {
+  background-color: var(--primary-dark);
+}
+
+/* 幻灯片切换动画 */
+.slide-container.active {
+  opacity: 1;
+}
+
+@media print {
+  .slide-container {
+    width: 1280px !important;
+    height: 720px !important;
+    page-break-after: always;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .slide-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="header">
+<div class="logo"><i class="fas fa-file-alt"></i> 智能公文助手</div>
+<div class="subtitle">专业高效的公文写作服务平台</div>
+</div>
+<div class="content-area">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+<h1 style="text-align: center; color: var(--primary-color); margin: 0;">
+<i class="fas fa-file-signature"></i> 智能公文助手
+      </h1>
+<a href="https://xie.gwy.life" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(67, 97, 238, 0.3)';" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 15px rgba(67, 97, 238, 0.4)';" style="display: inline-flex; align-items: center; background-color: var(--primary-color); color: white; padding: 8px 20px; text-decoration: none; border-radius: 30px; font-weight: 500; box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3); transition: transform 0.2s, box-shadow 0.2s;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i> 演示：xie.gwy.life
+      </a>
+</div>
+<div class="two-column" style="height: calc(100% - 30px); overflow: hidden;">
+<!-- 左侧内容：特点介绍 -->
+<div>
+<h2 style="margin-bottom: 12px; color: var(--primary-dark);">我是文主任</h2>
+<p style="font-size: 15px; line-height: 1.5; margin-bottom: 18px; color: var(--dark-gray);">
+          我是一位<strong>专为公务人员打造的AI公文写作助手</strong>，能够快速生成标准化、专业化的各类公文，帮助您摆脱繁琐的公文写作负担。
+        </p>
+<!-- 使用更现代的左侧特性列表 -->
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
+<i class="fas fa-bolt" style="color: var(--primary-color); font-size: 18px;"></i>
+</div>
+<div>
+<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">极速高效</h3>
+<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">从构思到成稿，仅需10秒，节省90%公文写作时间</p>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
+<i class="fas fa-check-double" style="color: var(--primary-color); font-size: 18px;"></i>
+</div>
+<div>
+<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">专业规范</h3>
+<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">内置10万+政务语料库，完全符合公文写作规范和标准</p>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
+<i class="fas fa-palette" style="color: var(--primary-color); font-size: 18px;"></i>
+</div>
+<div>
+<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">灵活多样</h3>
+<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">支持32+种标准公文格式，满足各类公文写作需求</p>
+</div>
+</div>
+<div style="display: flex; align-items: flex-start;">
+<div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
+<i class="fas fa-file-export" style="color: var(--primary-color); font-size: 18px;"></i>
+</div>
+<div>
+<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">便捷导出</h3>
+<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">一键导出Word文档，智能排版，即时可用</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧内容：头像和雷达图 -->
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<div style="background-color: #f5f7ff; border-radius: 15px; padding: 15px; text-align: center; width: 100%; height: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+<!-- 头像 -->
+<img alt="文主任" class="profile-image" src="../image/xie.png" style="width: 140px; height: 140px; object-fit: contain; margin: 0 auto 10px auto;"/>
+<h3 style="margin: 0 0 5px 0; color: var(--primary-dark); font-size: 16px;">能力指标</h3>
+<!-- 简洁的宣传语 -->
+<p style="font-style: italic; color: var(--mid-gray); font-size: 13px; margin-bottom: 5px; line-height: 1.3;">
+            "输入需求，10秒生成符合规范的优质公文，让高效办公不再是奢望"
+          </p>
+<!-- 雷达图 -->
+<div class="radar-chart-container" style="height: 180px; flex-shrink: 0; margin: 0;">
+<canvas id="skillsRadarChart"></canvas>
+</div>
+<!-- 技能标签 -->
+<div style="margin-top: 10px; background-color: white; border-radius: 8px; padding: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;">
+<p style="margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--primary-dark);">我的专长:</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+<span class="skill-tag">
+<i class="fas fa-bolt"></i>快速响应
+              </span>
+<span class="skill-tag">
+<i class="fas fa-book"></i>政策熟悉
+              </span>
+<span class="skill-tag">
+<i class="fas fa-check-circle"></i>格式规范
+              </span>
+<span class="skill-tag">
+<i class="fas fa-brain"></i>智能撰写
+              </span>
+<span class="skill-tag">
+<i class="fas fa-clipboard-check"></i>文风把控
+              </span>
+<span class="skill-tag">
+<i class="fas fa-tachometer-alt"></i>效率提升
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<div>AI赋能工作效率提升实践分享</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始化雷达图
+  const ctx = document.getElementById('skillsRadarChart').getContext('2d');
+  
+  // 雷达图数据
+  const data = {
+    labels: ['规范性', '专业度', '响应速度', '文档处理', '公文排版'],
+    datasets: [{
+      label: '能力值',
+      data: [98, 95, 94, 93, 97],
+      backgroundColor: 'rgba(67, 97, 238, 0.2)',
+      borderColor: 'rgba(67, 97, 238, 0.8)',
+      borderWidth: 2,
+      pointBackgroundColor: 'rgba(67, 97, 238, 1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(67, 97, 238, 1)',
+      pointRadius: 3
+    }]
+  };
+  
+  // 雷达图配置
+  const config = {
+    type: 'radar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 100,
+          ticks: {
+            display: false,
+            stepSize: 20
+          },
+          pointLabels: {
+            font: {
+              size: 10
+            },
+            color: '#333'
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.1)'
+          },
+          angleLines: {
+            color: 'rgba(0, 0, 0, 0.1)'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          titleFont: {
+            size: 12
+          },
+          bodyFont: {
+            size: 12
+          },
+          displayColors: false
+        }
+      }
+    }
+  };
+  
+  // 创建雷达图
+  new Chart(ctx, config);
+});
+</script>
+</body>
+</html>
