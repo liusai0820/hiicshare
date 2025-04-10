@@ -50,7 +50,6 @@ h1, h2, h3, h4, h5, h6 {
 .slide-container {
   width: 1280px;
   height: 720px;
-  background-color: #fff;
   position: relative;
   box-shadow: 0 5px 25px rgba(0,0,0,0.15);
   display: grid;
@@ -60,7 +59,6 @@ h1, h2, h3, h4, h5, h6 {
     "content"
     "footer";
   padding: 20px;
-  background: linear-gradient(to bottom, #f9f9f9, #fff);
   overflow: hidden;
 }
 
@@ -117,8 +115,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(72, 202, 228, 0.1) 100%);
-  z-index: -1;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.4) 0%, rgba(72, 202, 228, 0.4) 100%);
+  z-index: 0;
 }
 
 .cover-pattern {
@@ -127,9 +125,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(rgba(67, 97, 238, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(67, 97, 238, 0.25) 1px, transparent 1px);
   background-size: 20px 20px;
-  z-index: -1;
+  z-index: 0;
 }
 
 .cover-content {
@@ -140,6 +138,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   text-align: center;
   padding: 0 100px;
+  position: relative;
+  z-index: 1;
 }
 
 .cover-title {
@@ -165,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cover-decoration {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
 }
 
 .cover-decoration.top-left {
@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 150px;
   height: 150px;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  background-color: rgba(67, 97, 238, 0.1);
+  background-color: rgba(67, 97, 238, 0.3);
 }
 
 .cover-decoration.bottom-right {
@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 180px;
   height: 180px;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  background-color: rgba(72, 202, 228, 0.1);
+  background-color: rgba(72, 202, 228, 0.3);
 }
 
 .cover-icon {
@@ -362,50 +362,19 @@ h1, h2, h3, h4, h5, h6 {
 <div class="cover-gradient"></div>
 <div class="cover-pattern"></div>
 <div class="content-area">
-<div class="closing-content">
-<h1 class="closing-title">AI：从工具到思维方式的转变</h1>
-<div class="closing-quote">
-<span class="quote-left">"</span>
-<span class="quote-text">技术终极目标是让人类工作生活更好，AI价值在于解决实际问题，让我们专注创造性工作。</span>
-<span class="quote-right">"</span>
+<div class="closing-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+
+<div class="thank-you" style="font-size: 2.5em; margin-bottom: 20px;">谢谢聆听！</div>
+<div class="contact-info" style="font-size: 1.5em; color: var(--dark-gray); margin-top: 10px;">
+<p>期待与各位同事交流讨论</p>
 </div>
-<div class="vision-points">
-<div class="vision-point">
-<div class="vision-icon">
-<i class="fas fa-lightbulb"></i>
-</div>
-<div class="vision-title">重新定义工作</div>
-<div class="vision-desc">
-            AI重新定义工作方式，让我们从重复性任务中解放，专注于创造性思考和战略决策。
-          </div>
-</div>
-<div class="vision-point">
-<div class="vision-icon">
-<i class="fas fa-users"></i>
-</div>
-<div class="vision-title">人机协作新模式</div>
-<div class="vision-desc">
-            人类创意决策，AI执行分析，形成互补共赢关系，创造更高效的工作场景。
-          </div>
-</div>
-<div class="vision-point">
-<div class="vision-icon">
-<i class="fas fa-rocket"></i>
-</div>
-<div class="vision-title">持续创新迭代</div>
-<div class="vision-desc">
-            保持开放心态，将AI融入工作流程，持续学习适应新技术，实现个人与组织进化。
-          </div>
-</div>
-</div>
-<div class="thank-you">谢谢聆听！</div>
-<div class="contact-info">
-<p>欢迎交流讨论</p>
-</div>
+
 </div>
 </div>
 <div class="footer">
-              <div>AI赋能工作效率提升实践分享</div>
-              <div class="page-number">17/17</div>
-            </div></div></body>
+<div>AI赋能工作效率提升实践分享</div>
+<div class="page-number">17/17</div>
+</div>
+</div>
+</body>
 </html>

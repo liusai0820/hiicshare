@@ -88,10 +88,11 @@ h1, h2, h3, h4, h5, h6 {
 .content-area {
   grid-area: content;
   padding: 12px;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 580px;
 }
 
 .footer {
@@ -563,29 +564,41 @@ h1, h2, h3, h4, h5, h6 {
 <div class="subtitle">降低团队使用AI大模型的门槛</div>
 </div>
 <div class="content-area">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
 <h2 style="margin-bottom: 0; font-size: 24px;">团队实际应用场景</h2>
 </div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-<div class="use-case" style="margin-bottom: 0; height: auto; padding: 15px;">
-<div style="position: absolute; top: -10px; right: 15px; background-color: var(--secondary-color); color: white; font-size: 0.8em; padding: 3px 8px; border-radius: 12px;">工作场景</div>
-<h3 style="color: var(--secondary-color); margin-bottom: 10px; font-size: 18px; display: flex; align-items: center;">
-<i class="fas fa-file-alt" style="margin-right: 8px;"></i> 咨询报告与项目管理
-        </h3>
-<p style="font-size: 0.9em; margin-bottom: 10px; line-height: 1.5;">研究员利用LobeChat辅助撰写报告；项目团队用于记录整理、计划制定和进度跟踪。AI全方位提升工作效率。</p>
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-<span style="background-color: #e6f7ff; color: #0066cc; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">政策分析</span>
-<span style="background-color: #e6f7ff; color: #0066cc; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">报告撰写</span>
-<span style="background-color: #ffe6e6; color: #cc0000; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">项目管理</span>
-<span style="background-color: #ffe6e6; color: #cc0000; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">会议纪要</span>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+<div style="display: flex; flex-direction: column; gap: 15px;">
+  <div class="use-case" style="margin-bottom: 0; height: auto; padding: 15px;">
+    <div style="position: absolute; top: -10px; right: 15px; background-color: var(--secondary-color); color: white; font-size: 0.8em; padding: 3px 8px; border-radius: 12px;">咨询工作</div>
+    <h3 style="color: var(--secondary-color); margin-bottom: 10px; font-size: 18px; display: flex; align-items: center;">
+      <i class="fas fa-file-alt" style="margin-right: 8px;"></i> 咨询报告辅助
+    </h3>
+    <p style="font-size: 0.9em; margin-bottom: 10px; line-height: 1.5;">研究员利用LobeChat辅助撰写报告、政策分析和资料整理。大幅提升内容质量与效率。</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <span style="background-color: #e6f7ff; color: #0066cc; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">政策分析</span>
+      <span style="background-color: #e6f7ff; color: #0066cc; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">报告撰写</span>
+    </div>
+  </div>
+  
+  <div class="use-case" style="margin-bottom: 0; height: auto; padding: 15px; background-color: #f0f9ff; border-left: 4px solid #1890ff;">
+    <div style="position: absolute; top: -10px; right: 15px; background-color: #1890ff; color: white; font-size: 0.8em; padding: 3px 8px; border-radius: 12px;">项目协作</div>
+    <h3 style="color: #1890ff; margin-bottom: 10px; font-size: 18px; display: flex; align-items: center;">
+      <i class="fas fa-tasks" style="margin-right: 8px;"></i> 项目管理工具
+    </h3>
+    <p style="font-size: 0.9em; margin-bottom: 10px; line-height: 1.5;">项目团队用于记录整理、计划制定和进度跟踪，提高团队协作效率。</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <span style="background-color: #ffe6e6; color: #cc0000; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">项目管理</span>
+      <span style="background-color: #ffe6e6; color: #cc0000; font-size: 0.8em; padding: 4px 10px; border-radius: 4px;">资料核查</span>
+    </div>
+  </div>
 </div>
-</div>
-<div style="background-color: #fef8e8; border-radius: 12px; padding: 15px; margin-bottom: 0; height: auto; position: relative;">
+<div style="background-color: #fef8e8; border-radius: 12px; padding: 12px; margin-bottom: 0; height: auto; position: relative;">
 <div style="position: absolute; top: -10px; right: 15px; background-color: #e6a23c; color: white; font-size: 0.8em; padding: 3px 8px; border-radius: 12px;">团队反馈</div>
-<h3 style="color: #e6a23c; margin-bottom: 10px; display: flex; align-items: center; font-size: 18px;">
+<h3 style="color: #e6a23c; margin-bottom: 8px; display: flex; align-items: center; font-size: 18px;">
 <i class="fas fa-comments" style="margin-right: 8px;"></i> 团队评价
         </h3>
-<div style="display: flex; margin-bottom: 12px; background-color: white; border-radius: 8px; padding: 10px;">
+<div style="display: flex; margin-bottom: 8px; background-color: white; border-radius: 8px; padding: 8px;">
 <div style="width: 26px; height: 26px; background-color: #f0f4ff; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; flex-shrink: 0;">
 <i class="fas fa-user" style="color: var(--primary-color); font-size: 12px;"></i>
 </div>
@@ -593,7 +606,7 @@ h1, h2, h3, h4, h5, h6 {
 <div style="font-weight: 500; font-size: 0.85em;">小P："赛哥，Lobe老师该充钱了，API额度用完了，报告还没写完呢！"</div>
 </div>
 </div>
-<div style="display: flex; margin-bottom: 12px; background-color: white; border-radius: 8px; padding: 10px;">
+<div style="display: flex; margin-bottom: 8px; background-color: white; border-radius: 8px; padding: 8px;">
 <div style="width: 26px; height: 26px; background-color: #f0f4ff; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; flex-shrink: 0;">
 <i class="fas fa-user" style="color: var(--primary-color); font-size: 12px;"></i>
 </div>
@@ -601,7 +614,7 @@ h1, h2, h3, h4, h5, h6 {
 <div style="font-weight: 500; font-size: 0.85em;">小L："问问Lobe老师怎么处理这数据，很实用。不用它效率至少降一半。"</div>
 </div>
 </div>
-<div style="display: flex; background-color: white; border-radius: 8px; padding: 10px;">
+<div style="display: flex; background-color: white; border-radius: 8px; padding: 8px;">
 <div style="width: 26px; height: 26px; background-color: #f0f4ff; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; flex-shrink: 0;">
 <i class="fas fa-user" style="color: var(--primary-color); font-size: 12px;"></i>
 </div>
@@ -611,21 +624,21 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 5px;">
 <div>
-<div style="background-color: #f8f9ff; border-radius: 10px; padding: 15px; height: auto;">
-<h3 style="color: var(--primary-color); margin-bottom: 10px; font-size: 18px;">
+<div style="background-color: #f8f9ff; border-radius: 10px; padding: 12px; height: auto;">
+<h3 style="color: var(--primary-color); margin-bottom: 8px; font-size: 18px;">
 <i class="fas fa-chart-line"></i> 实施效果
           </h3>
-<ul style="list-style-type: none; padding-left: 10px; margin: 0;">
-<li style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+<ul style="list-style-type: none; padding-left: 5px; margin: 0;">
+<li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
 <i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px; margin-top: 2px; font-size: 16px;"></i>
 <div>
 <strong style="font-size: 1em;">工作效率提升35%</strong>
 <p style="margin: 5px 0 0 0; font-size: 0.9em; color: var(--mid-gray);">咨询报告和整理速度显著提高</p>
 </div>
 </li>
-<li style="margin-bottom: 15px; display: flex; align-items: flex-start;">
+<li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
 <i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 10px; margin-top: 2px; font-size: 16px;"></i>
 <div>
 <strong style="font-size: 1em;">AI使用率提升90%</strong>
@@ -643,18 +656,18 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 </div>
 <div>
-<div style="background-color: #f0f4ff; border-radius: 10px; padding: 15px; height: auto;">
-<h3 style="color: var(--primary-dark); margin-bottom: 10px; font-size: 18px;">
+<div style="background-color: #f0f4ff; border-radius: 10px; padding: 12px; height: auto;">
+<h3 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 18px;">
 <i class="fas fa-road"></i> 未来规划
           </h3>
-<div style="display: flex; margin-bottom: 15px;">
+<div style="display: flex; margin-bottom: 10px;">
 <div style="width: 28px; height: 28px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 12px; flex-shrink: 0;">1</div>
 <div>
 <strong style="font-size: 1em;">政策分析专用插件</strong>
 <p style="margin: 5px 0 0 0; font-size: 0.9em;">开发分析与文档处理插件</p>
 </div>
 </div>
-<div style="display: flex; margin-bottom: 15px;">
+<div style="display: flex; margin-bottom: 10px;">
 <div style="width: 28px; height: 28px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 12px; flex-shrink: 0;">2</div>
 <div>
 <strong style="font-size: 1em;">智库知识库集成</strong>

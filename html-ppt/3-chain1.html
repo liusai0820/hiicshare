@@ -95,6 +95,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 580px;
 }
 
 .footer {
@@ -424,6 +425,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 140px;
   margin: 0;
   position: relative;
+  flex-shrink: 0;
+  overflow: visible;
 }
 
 /* 头像样式 */
@@ -451,7 +454,7 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 <div class="content-area" style="overflow: hidden;">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-<h1 style="text-align: center; color: var(--primary-color); margin: 0;">
+<h1 style="text-align: center; color: var(--primary-color); margin: 0; font-size: 26px;">
 <i class="fas fa-id-badge"></i> 你的专属产业研究实习生
       </h1>
 <a href="https://chain.gwy.life" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(67, 97, 238, 0.3)';" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 15px rgba(67, 97, 238, 0.4)';" style="display: inline-flex; align-items: center; background-color: var(--primary-color); color: white; padding: 8px 20px; text-decoration: none; border-radius: 30px; font-weight: 500; box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3); transition: transform 0.2s, box-shadow 0.2s;" target="_blank">
@@ -461,37 +464,37 @@ h1, h2, h3, h4, h5, h6 {
 <div class="two-column" style="height: calc(100% - 30px); overflow: hidden;">
 <!-- 左侧内容：用更优雅的样式替代卡片 -->
 <div>
-<h2 style="margin-bottom: 12px; color: var(--primary-dark);">技能画像</h2>
-<p style="font-size: 15px; line-height: 1.5; margin-bottom: 18px; color: var(--dark-gray);">
+<h2 style="margin-bottom: 15px; color: var(--primary-dark); font-size: 24px;">图谱君</h2>
+<p style="font-size: 15px; line-height: 1.6; margin-bottom: 20px; color: var(--dark-gray);">
           我是团队中的<strong>AI驱动型产业分析实习生</strong>，专注于产业链研究，擅长快速构建详尽的产业全景图并提供企业深度分析。
         </p>
 <!-- 更现代的左侧特性列表 -->
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; align-items: flex-start; padding-bottom: 10px; border-bottom: 1px dashed #e0e0e0;">
 <div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
 <i class="fas fa-rocket" style="color: var(--primary-color); font-size: 18px;"></i>
 </div>
 <div>
-<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">超高效率</h3>
-<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">将传统2周的研究工作量缩短至几分钟内完成，无需休息和咖啡</p>
+<h3 style="color: var(--primary-color); font-size: 17px; margin-bottom: 3px;">超高效率</h3>
+<p style="margin: 0; line-height: 1.5; color: var(--dark-gray); font-size: 14px;">将传统2周的研究工作量缩短至几分钟内完成，无需休息和咖啡</p>
 </div>
 </div>
-<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="display: flex; align-items: flex-start; padding-bottom: 10px; border-bottom: 1px dashed #e0e0e0;">
 <div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
 <i class="fas fa-brain" style="color: var(--primary-color); font-size: 18px;"></i>
 </div>
 <div>
-<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">过目不忘</h3>
-<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">研读过海量产业资料，能精准定位产业关键环节和竞争格局要素</p>
+<h3 style="color: var(--primary-color); font-size: 17px; margin-bottom: 3px;">过目不忘</h3>
+<p style="margin: 0; line-height: 1.5; color: var(--dark-gray); font-size: 14px;">研读过海量产业资料，能精准定位产业关键环节和竞争格局要素</p>
 </div>
 </div>
-<div style="display: flex; align-items: flex-start; padding-bottom: 6px; border-bottom: 1px dashed #e0e0e0;">
+<div style="display: flex; align-items: flex-start; padding-bottom: 10px; border-bottom: 1px dashed #e0e0e0;">
 <div style="background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; margin-right: 15px; flex-shrink: 0;">
 <i class="fas fa-chart-line" style="color: var(--primary-color); font-size: 18px;"></i>
 </div>
 <div>
-<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">最强大脑</h3>
-<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">具备强大结构化思维，能快速提炼产业关键信息并形成可视化洞察</p>
+<h3 style="color: var(--primary-color); font-size: 17px; margin-bottom: 3px;">最强大脑</h3>
+<p style="margin: 0; line-height: 1.5; color: var(--dark-gray); font-size: 14px;">具备强大结构化思维，能快速提炼产业关键信息并形成可视化洞察</p>
 </div>
 </div>
 <div style="display: flex; align-items: flex-start;">
@@ -499,25 +502,36 @@ h1, h2, h3, h4, h5, h6 {
 <i class="fas fa-cogs" style="color: var(--primary-color); font-size: 18px;"></i>
 </div>
 <div>
-<h3 style="color: var(--primary-color); font-size: 16px; margin-bottom: 2px;">持续进化</h3>
-<p style="margin: 0; line-height: 1.4; color: var(--dark-gray); font-size: 14px;">通过最新AI模型实时更新知识库，确保产业洞察的前沿性和准确性</p>
+<h3 style="color: var(--primary-color); font-size: 17px; margin-bottom: 3px;">持续进化</h3>
+<p style="margin: 0; line-height: 1.5; color: var(--dark-gray); font-size: 14px;">通过最新AI模型实时更新知识库，确保产业洞察的前沿性和准确性</p>
 </div>
 </div>
 </div>
 </div>
 <!-- 右侧内容：雷达图和特点 -->
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-<div style="background-color: #f5f7ff; border-radius: 15px; padding: 10px; text-align: center; width: 100%; height: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+<div style="background-color: #f5f7ff; border-radius: 15px; padding: 15px; text-align: center; width: 100%; height: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
 <!-- 更换为本地图片chain.png，压缩头像大小 -->
-<img alt="智能产业分析实习生" class="profile-image" src="../image/chain.png" style="object-fit: contain; width: 100px; height: 100px; margin: 0 auto 2px auto; background: transparent; padding: 0;"/>
-<h3 style="margin: 0 0 2px 0; color: var(--primary-dark); font-size: 14px;">工作技能</h3>
+<div style="text-align: center;">
+  <img alt="智能产业分析实习生" class="profile-image" src="../image/chain.png" style="object-fit: contain; width: 100px; height: 100px; margin: 0 auto; background: transparent; padding: 0;"/>
+</div>
+
+<div style="text-align: center; margin-top: -5px;">
+  <h2 style="margin: 0; color: var(--primary-dark); font-size: 24px;">图谱君</h2>
+  <div style="display: flex; justify-content: center; margin: 5px 0 10px;">
+    <span style="background-color: var(--primary-light); color: var(--primary-dark); font-size: 12px; padding: 2px 12px; border-radius: 12px;">入职时间：2025年1月</span>
+  </div>
+</div>
+
 <!-- 更简洁有力的宣传语 -->
-<p style="font-style: italic; color: var(--mid-gray); font-size: 11px; margin-bottom: 0; line-height: 1.2;">"输入一个行业，分钟级构建完整产业洞察，让您决策比竞争对手快一步"</p>
-<div class="radar-chart-container" style="height: 120px; flex-shrink: 0; margin: 0;">
+<p style="font-style: italic; color: var(--mid-gray); font-size: 12px; margin-bottom: 10px; line-height: 1.3; text-align: center;">"输入一个行业，分钟级构建完整产业洞察，让您决策比竞争对手快一步"</p>
+
+<div class="radar-chart-container" style="height: 140px; flex-shrink: 0; margin: 0 0 10px 0;">
 <canvas id="skillsRadarChart"></canvas>
 </div>
-<div style="margin-top: 5px; background-color: white; border-radius: 8px; padding: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;">
-<p style="margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--primary-dark);">我的工作标签:</p>
+
+<div style="margin-top: 5px; background-color: white; border-radius: 8px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;">
+<p style="margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--primary-dark);">工作标签:</p>
 <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
 <span style="background-color: rgba(67, 97, 238, 0.1); color: var(--primary-color); border-radius: 15px; padding: 4px 10px; font-size: 12px; display: inline-block; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
 <i class="fas fa-bolt" style="margin-right: 4px; font-size: 10px;"></i>从不喊累
@@ -539,6 +553,7 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 <div class="footer">
 <div>AI赋能工作效率提升实践分享</div>
+<div class="page-number">5/17</div>
 </div>
 
 <script>
@@ -605,6 +620,12 @@ document.addEventListener('DOMContentLoaded', function() {
             size: 12
           },
           displayColors: false
+        }
+      },
+      layout: {
+        padding: {
+          top: 5,
+          bottom: 5
         }
       }
     }

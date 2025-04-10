@@ -319,7 +319,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 添加雷达图样式 */
 .radar-chart-container {
   width: 100%;
-  height: 150px;
+  height: 140px;
   margin: 10px 0;
   position: relative;
 }
@@ -477,7 +477,7 @@ h1, h2, h3, h4, h5, h6 {
 <div class="two-column" style="height: calc(100% - 30px); overflow: hidden;">
 <!-- 左侧内容：特点介绍 -->
 <div>
-<h2 style="margin-bottom: 12px; color: var(--primary-dark);">我是文主任</h2>
+<h2 style="margin-bottom: 12px; color: var(--primary-dark);">文主任</h2>
 <p style="font-size: 15px; line-height: 1.5; margin-bottom: 18px; color: var(--dark-gray);">
           我是一位<strong>专为公务人员打造的AI公文写作助手</strong>，能够快速生成标准化、专业化的各类公文，帮助您摆脱繁琐的公文写作负担。
         </p>
@@ -525,19 +525,22 @@ h1, h2, h3, h4, h5, h6 {
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 <div style="background-color: #f5f7ff; border-radius: 15px; padding: 15px; text-align: center; width: 100%; height: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
 <!-- 头像 -->
-<img alt="文主任" class="profile-image" src="../image/xie.png" style="width: 140px; height: 140px; object-fit: contain; margin: 0 auto 10px auto;"/>
-<h3 style="margin: 0 0 5px 0; color: var(--primary-dark); font-size: 16px;">能力指标</h3>
+<img alt="文主任" class="profile-image" src="../image/xie.png" style="width: 95px; height: 95px; object-fit: contain; margin: 0 auto 8px auto; background: transparent; padding: 0;"/>
+<h2 style="margin: 0 0 2px 0; color: var(--primary-dark); font-size: 20px; text-align: center;">文主任</h2>
+<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 5px;">
+  <span style="background-color: var(--primary-light); color: var(--primary-dark); font-size: 12px; padding: 2px 8px; border-radius: 10px;">入职时间：2025年2月</span>
+</div>
 <!-- 简洁的宣传语 -->
-<p style="font-style: italic; color: var(--mid-gray); font-size: 13px; margin-bottom: 5px; line-height: 1.3;">
-            "输入需求，10秒生成符合规范的优质公文，让高效办公不再是奢望"
-          </p>
+<p style="font-style: italic; color: var(--mid-gray); font-size: 12px; margin-bottom: 8px; line-height: 1.3;">
+  "输入需求，10秒生成符合规范的优质公文，让高效办公不再是奢望"
+</p>
 <!-- 雷达图 -->
-<div class="radar-chart-container" style="height: 180px; flex-shrink: 0; margin: 0;">
+<div class="radar-chart-container" style="height: 140px; flex-shrink: 0; margin: 0;">
 <canvas id="skillsRadarChart"></canvas>
 </div>
 <!-- 技能标签 -->
-<div style="margin-top: 10px; background-color: white; border-radius: 8px; padding: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;">
-<p style="margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--primary-dark);">我的专长:</p>
+<div style="margin-top: 5px; background-color: white; border-radius: 8px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;">
+<p style="margin-bottom: 6px; font-weight: 500; font-size: 13px; color: var(--primary-dark);">技能专长:</p>
 <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
 <span class="skill-tag">
 <i class="fas fa-bolt"></i>快速响应
@@ -554,9 +557,7 @@ h1, h2, h3, h4, h5, h6 {
 <span class="skill-tag">
 <i class="fas fa-clipboard-check"></i>文风把控
               </span>
-<span class="skill-tag">
-<i class="fas fa-tachometer-alt"></i>效率提升
-              </span>
+
 </div>
 </div>
 </div>
@@ -565,6 +566,7 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 <div class="footer">
 <div>AI赋能工作效率提升实践分享</div>
+<div class="page-number">12/17</div>
 </div>
 
 <script>
