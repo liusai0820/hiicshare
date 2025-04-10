@@ -87,11 +87,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-area {
   grid-area: content;
-  padding: 12px;
-  overflow: hidden;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
+  max-height: calc(100% - 60px);
+  overflow: visible;
 }
 
 .footer {
@@ -103,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--mid-gray);
   border-top: 1px solid #e8e8e8;
   padding-top: 10px;
+  margin-top: auto;
 }
 
 .page-number {
@@ -148,24 +150,24 @@ h1, h2, h3, h4, h5, h6 {
 .feature-card {
   background-color: white;
   border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
 }
 
 .feature-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: var(--primary-light);
   color: var(--primary-dark);
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 15px;
-  font-size: 1.5em;
+  margin-right: 12px;
+  font-size: 1.3em;
 }
 
 .feature-text {
@@ -563,19 +565,19 @@ h1, h2, h3, h4, h5, h6 {
 <div class="subtitle">降低团队使用AI大模型的门槛</div>
 </div>
 <div class="content-area">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-<h2 style="margin-bottom: 0;">为什么选择本地部署LobeChat？</h2>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<h2 style="margin-bottom: 0; font-size: 1.4em;">为什么选择本地部署LobeChat？</h2>
 </div>
 <div class="two-column">
 <div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
 <div class="feature-card" style="margin-bottom: 0; height: 100%;">
 <div class="feature-icon">
 <i class="fas fa-shield-alt"></i>
 </div>
 <div class="feature-text">
-<h3>数据隐私与安全</h3>
-<p>内部网络部署，防止机密外泄，符合企业安全要求</p>
+<h3 style="font-size: 0.95em; margin-bottom: 3px;">数据隐私与安全</h3>
+<p style="font-size: 0.8em;">内部网络部署，防止机密外泄，符合企业安全要求</p>
 </div>
 </div>
 <div class="feature-card" style="margin-bottom: 0; height: 100%;">
@@ -583,8 +585,8 @@ h1, h2, h3, h4, h5, h6 {
 <i class="fas fa-network-wired"></i>
 </div>
 <div class="feature-text">
-<h3>稳定网络访问</h3>
-<p>内网环境下稳定快速访问，提高工作效率</p>
+<h3 style="font-size: 0.95em; margin-bottom: 3px;">稳定网络访问</h3>
+<p style="font-size: 0.8em;">内网环境下稳定快速访问，提高工作效率</p>
 </div>
 </div>
 <div class="feature-card" style="margin-bottom: 0; height: 100%;">
@@ -592,8 +594,8 @@ h1, h2, h3, h4, h5, h6 {
 <i class="fas fa-cogs"></i>
 </div>
 <div class="feature-text">
-<h3>定制化与集成</h3>
-<p>可定制开发，与内部系统无缝集成</p>
+<h3 style="font-size: 0.95em; margin-bottom: 3px;">定制化与集成</h3>
+<p style="font-size: 0.8em;">可定制开发，与内部系统无缝集成</p>
 </div>
 </div>
 <div class="feature-card" style="margin-bottom: 0; height: 100%;">
@@ -601,135 +603,136 @@ h1, h2, h3, h4, h5, h6 {
 <i class="fas fa-wallet"></i>
 </div>
 <div class="feature-text">
-<h3>成本优化管理</h3>
-<p>统一管理API密钥，优化资源分配</p>
+<h3 style="font-size: 0.95em; margin-bottom: 3px;">成本优化管理</h3>
+<p style="font-size: 0.8em;">统一管理API密钥，优化资源分配</p>
 </div>
 </div>
 </div>
-<div style="background-color: #f0f4ff; border-radius: 10px; padding: 15px; margin-top: 20px;">
-<h3 style="color: var(--primary-dark); display: flex; align-items: center; margin-bottom: 5px;">
+<div style="background-color: #f0f4ff; border-radius: 10px; padding: 10px; margin-top: 10px;">
+<h3 style="color: var(--primary-dark); display: flex; align-items: center; margin-bottom: 5px; font-size: 0.95em;">
 <i class="fas fa-coins" style="margin-right: 8px; color: #ffc107;"></i>
             显著的成本优势
           </h3>
-<div style="background-color: #f8f9ff; border-radius: 8px; padding: 15px; margin-top: 10px;">
+<div style="background-color: #f8f9ff; border-radius: 8px; padding: 10px; margin-top: 5px;">
 <div style="display: flex; flex-direction: column;">
-<div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-<div style="flex: 1; text-align: center; color: var(--mid-gray); font-size: 0.9em;">个人分散使用</div>
-<div style="width: 50px;"></div>
-<div style="flex: 1; text-align: center; color: var(--mid-gray); font-size: 0.9em;">团队共享部署</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+<div style="flex: 1; text-align: center; color: var(--mid-gray); font-size: 0.8em;">个人分散使用</div>
+<div style="width: 30px;"></div>
+<div style="flex: 1; text-align: center; color: var(--mid-gray); font-size: 0.8em;">团队共享部署</div>
 </div>
-<div style="display: flex; align-items: flex-end; margin-top: 20px;">
+<div style="display: flex; align-items: flex-end; margin-top: 10px;">
 <div style="flex: 1; text-align: center;">
 <div style="display: flex; justify-content: center;">
-<div style="margin: 0 5px; text-align: center; position: relative;">
-<div style="position: absolute; top: -20px; width: 100%; text-align: center; color: #ff6b6b; font-weight: bold;">$20</div>
-<div style="width: 50px; height: 90px; background-color: #ff6b6b;"></div>
-<div style="background-color: #ff6b6b; color: white; font-size: 0.75em; padding: 2px 0;">每人</div>
+<div style="margin: 0 3px; text-align: center; position: relative;">
+<div style="position: absolute; top: -15px; width: 100%; text-align: center; color: #ff6b6b; font-weight: bold; font-size: 0.8em;">$20</div>
+<div style="width: 40px; height: 70px; background-color: #ff6b6b;"></div>
+<div style="background-color: #ff6b6b; color: white; font-size: 0.7em; padding: 1px 0;">每人</div>
 </div>
-<div style="margin: 0 5px; text-align: center; position: relative;">
-<div style="position: absolute; top: -20px; width: 100%; text-align: center; color: #ff8c8c; font-weight: bold;">$20</div>
-<div style="width: 50px; height: 90px; background-color: #ff8c8c;"></div>
-<div style="background-color: #ff8c8c; color: white; font-size: 0.75em; padding: 2px 0;">每人</div>
+<div style="margin: 0 3px; text-align: center; position: relative;">
+<div style="position: absolute; top: -15px; width: 100%; text-align: center; color: #ff8c8c; font-weight: bold; font-size: 0.8em;">$20</div>
+<div style="width: 40px; height: 70px; background-color: #ff8c8c;"></div>
+<div style="background-color: #ff8c8c; color: white; font-size: 0.7em; padding: 1px 0;">每人</div>
 </div>
-<div style="margin: 0 5px; text-align: center; position: relative;">
-<div style="position: absolute; top: -20px; width: 100%; text-align: center; color: #ffacac; font-weight: bold;">$20</div>
-<div style="width: 50px; height: 90px; background-color: #ffacac;"></div>
-<div style="background-color: #ffacac; color: white; font-size: 0.75em; padding: 2px 0;">每人</div>
+<div style="margin: 0 3px; text-align: center; position: relative;">
+<div style="position: absolute; top: -15px; width: 100%; text-align: center; color: #ffacac; font-weight: bold; font-size: 0.8em;">$20</div>
+<div style="width: 40px; height: 70px; background-color: #ffacac;"></div>
+<div style="background-color: #ffacac; color: white; font-size: 0.7em; padding: 1px 0;">每人</div>
 </div>
 </div>
-<div style="margin-top: 8px; color: var(--accent-color); font-weight: 500;">10人团队 = $200/月</div>
+<div style="margin-top: 5px; color: var(--accent-color); font-weight: 500; font-size: 0.75em;">10人团队 = $200/月</div>
 </div>
-<div style="display: flex; align-items: center; justify-content: center; width: 50px;">
-<div style="width: 35px; height: 35px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+<div style="display: flex; align-items: center; justify-content: center; width: 30px;">
+<div style="width: 25px; height: 25px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 0.8em;">
 <i class="fas fa-angle-double-right"></i>
 </div>
 </div>
 <div style="flex: 1; text-align: center;">
-<div style="display: flex; justify-content: center; align-items: flex-end; height: 90px;">
+<div style="display: flex; justify-content: center; align-items: flex-end; height: 70px;">
 <div style="text-align: center; position: relative;">
-<div style="position: absolute; top: -20px; width: 100%; text-align: center; color: var(--primary-color); font-weight: bold;">$20</div>
-<div style="width: 60px; height: 30px; background-color: var(--primary-color);"></div>
-<div style="background-color: var(--primary-color); color: white; font-size: 0.75em; padding: 2px 0;">总计</div>
+<div style="position: absolute; top: -15px; width: 100%; text-align: center; color: var(--primary-color); font-weight: bold; font-size: 0.8em;">$20</div>
+<div style="width: 50px; height: 25px; background-color: var(--primary-color);"></div>
+<div style="background-color: var(--primary-color); color: white; font-size: 0.7em; padding: 1px 0;">总计</div>
 </div>
 </div>
-<div style="margin-top: 8px; color: var(--primary-color); font-weight: 500;">节省高达90%成本</div>
+<div style="margin-top: 5px; color: var(--primary-color); font-weight: 500; font-size: 0.75em;">节省高达90%成本</div>
 </div>
 </div>
 </div>
-<p style="font-style: italic; color: var(--mid-gray); font-size: 0.8em; text-align: center; margin: 15px 0 5px 0;">
-              个人使用OpenAI/Claude/Gemini等服务或聚合平台每人约$20/月，<br/>而团队部署LobeChat仅需$20/月即可供整个团队使用
+<p style="font-style: italic; color: var(--mid-gray); font-size: 0.7em; text-align: center; margin: 5px 0 0 0;">
+              个人使用OpenAI/Claude/Gemini等服务或聚合平台每人约$20/月，
+              而团队部署LobeChat仅需$20/月即可供整个团队使用
             </p>
 </div>
 </div>
 </div>
 <div>
-<div style="background-color: white; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding: 20px; height: 100%; overflow-y: auto;">
-<h3 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">
+<div style="background-color: white; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); padding: 15px; height: 100%; overflow: visible;">
+<h3 style="text-align: center; color: var(--primary-color); margin-bottom: 10px; font-size: 0.95em;">
 <i class="fas fa-server"></i> 本地部署 vs 在线服务
           </h3>
-<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 10px;">
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<th style="padding: 10px; text-align: left; width: 30%;">比较项</th>
-<th style="padding: 10px; text-align: center; color: var(--primary-color);">本地部署</th>
-<th style="padding: 10px; text-align: center; color: var(--mid-gray);">在线服务</th>
+<th style="padding: 5px; text-align: left; width: 30%; font-size: 0.8em;">比较项</th>
+<th style="padding: 5px; text-align: center; color: var(--primary-color); font-size: 0.8em;">本地部署</th>
+<th style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">在线服务</th>
 </tr>
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<td style="padding: 10px; font-weight: 500;">数据安全</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">数据安全</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 高
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 低
               </td>
 </tr>
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<td style="padding: 10px; font-weight: 500;">访问稳定性</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">访问稳定性</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 稳定
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 不稳定
               </td>
 </tr>
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<td style="padding: 10px; font-weight: 500;">账号管理</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">账号管理</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 统一管理
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 各自注册
               </td>
 </tr>
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<td style="padding: 10px; font-weight: 500;">成本控制</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">成本控制</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 集中优化
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 分散重复
               </td>
 </tr>
 <tr style="border-bottom: 1px solid #e8e8e8;">
-<td style="padding: 10px; font-weight: 500;">定制化程度</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">定制化程度</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 高度定制
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 有限定制
               </td>
 </tr>
 <tr>
-<td style="padding: 10px; font-weight: 500;">内网集成</td>
-<td style="padding: 10px; text-align: center; color: var(--primary-dark);">
+<td style="padding: 5px; font-weight: 500; font-size: 0.8em;">内网集成</td>
+<td style="padding: 5px; text-align: center; color: var(--primary-dark); font-size: 0.8em;">
 <i class="fas fa-check-circle"></i> 完全支持
               </td>
-<td style="padding: 10px; text-align: center; color: var(--mid-gray);">
+<td style="padding: 5px; text-align: center; color: var(--mid-gray); font-size: 0.8em;">
 <i class="fas fa-times-circle"></i> 难以实现
               </td>
 </tr>
 </table>
-<div style="background-color: #f5f7ff; border-radius: 8px; padding: 15px; margin-top: 20px;">
-<p style="text-align: center; font-style: italic;">
+<div style="background-color: #f5f7ff; border-radius: 8px; padding: 10px; margin-top: 10px;">
+<p style="text-align: center; font-style: italic; font-size: 0.75em;">
               "通过本地部署LobeChat，我们将AI大模型的能力带入团队内部网络，在保障数据安全的同时，让每位同事都能轻松获取AI助手的强大功能。"
             </p>
 </div>
@@ -738,8 +741,11 @@ h1, h2, h3, h4, h5, h6 {
 </div>
 </div>
 </div>
+</div>
 <div class="footer">
-              <div>AI赋能工作效率提升实践分享</div>
-              <div class="page-number">3/17</div>
-            </div></div></body>
+<div>AI赋能工作效率提升实践分享</div>
+<div class="page-number">3/17</div>
+</div>
+</div>
+</body>
 </html>
